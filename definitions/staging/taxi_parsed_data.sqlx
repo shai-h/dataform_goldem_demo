@@ -25,4 +25,3 @@ cast(JSON_EXTRACT(data , "$.meter_increment") as float64) as meter_increment,
 replace(JSON_EXTRACT(data , "$.ride_status"),'"','') as ride_status,
 JSON_EXTRACT_SCALAR(data , "$.passenger_count") as passenger_count,
 from ${ref("taxi_trips_pub_sub")}
-where ride_id is null
