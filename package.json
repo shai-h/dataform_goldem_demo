@@ -1,0 +1,6 @@
+{
+  "name": "datafrom_golden_demo",
+  "dependencies": {
+    "@dataform/core": "2.0.1"
+  }
+}

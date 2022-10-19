@@ -1,0 +1,25 @@
+config {
+  type: "table",
+  schema: "dataform_demo",
+  tags: ["reporting"],
+  description: "Combine taxi grouped data with payment lookup",
+  columns: {
+    ride_id: `A unique identifier for a ride`,
+    meter_cost: `Total cost for a spesific ride`,
+  },
+
+  
+  bigquery: {
+    partitionBy: "hour(start_time)"
+  },
+  
+  assertions: {
+    uniqueKey: ["ride_id"],
+    nonNull: ["ride_id", "start_time"]
+  }
+}
+
+
+select taxi.*, payment.Payment_Type_Description
+from ${ref("rides_group_data")} taxi join ${ref("ext_payment_type")} payment
+on taxi.payment_type_id=payment.payment_type_id

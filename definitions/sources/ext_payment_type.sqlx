@@ -1,0 +1,8 @@
+config {
+  type: "declaration",
+  database: "hshai-477-2022101806550500",
+  schema: "taxi_dataset",
+  name: "ext_payment_type"
+ }
+
+ -- external table , s3
