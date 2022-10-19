@@ -2,16 +2,16 @@ config {
   type: "table",
   schema: "dataform_demo",
   tags: ["staging"],
-  description: "Parse raw data into columns"
-}
+  description: "Parse raw data into columns",
   
   bigquery: {
-    partitionBy: "hour(timestamp)"
+    partitionBy: 'DATETIME_TRUNC(timestamp, HOUR)'
   },
   
   assertions: {
     nonNull: ["ride_id", "timestamp"]
-  }
+}
+
 }
 
 select 

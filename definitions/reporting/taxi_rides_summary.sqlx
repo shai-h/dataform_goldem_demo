@@ -10,7 +10,7 @@ config {
 
   
   bigquery: {
-    partitionBy: "hour(start_time)"
+    partitionBy: "DATETIME_TRUNC(start_time, HOUR)"
   },
   
   assertions: {
