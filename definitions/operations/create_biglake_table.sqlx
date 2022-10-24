@@ -1,0 +1,5 @@
+config { type: "operations", tags: ["sp"] }
+
+--- using CreateBiglake.js function to call a stored procedure to create a bigLake table
+
+${CreateBiglake.CreateBiglake("'biglake_payment_type'","'gs://processed-hshai-477-2022101806550500-meppxbf9ob/processed/taxi-data/payment_type_table/*.parquet'")}  

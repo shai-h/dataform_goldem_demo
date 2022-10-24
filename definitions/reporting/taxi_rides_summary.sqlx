@@ -21,5 +21,5 @@ config {
 
 
 select taxi.*, payment.Payment_Type_Description
-from ${ref("rides_group_data")} taxi join ${ref("ext_payment_type")} payment
+from ${ref("rides_group_data")} taxi join ${ref("biglake_payment_type")} payment
 on taxi.payment_type_id=payment.payment_type_id
