@@ -1,4 +1,4 @@
-config { type: "operations", tags: ["sp"] }
+config { type: "operations", tags: ["stored procedure"] }
 
 --- using CreateBiglake.js function to call a stored procedure to create a bigLake table
 
