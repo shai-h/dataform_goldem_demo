@@ -5,7 +5,7 @@ config {
   description: "Combine taxi grouped data with payment lookup",
   columns: {
     ride_id: `A unique identifier for a ride`,
-    meter_cost: `Total cost for a spesific ride`,
+    meter_cost: `Total cost for a specific ride`,
   },
 
   
