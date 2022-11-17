@@ -23,3 +23,4 @@ from
     max(passenger_count) passenger_count
     from ${ref("taxi_parsed_data")}
     group by 1)
+ 
