@@ -1,3 +1,5 @@
+--- Biglake table. contains lookup info for payment type
+
 config {
   type: "declaration",
   database: "hshai-477-2022101806550500",

@@ -1,3 +1,7 @@
+/*Second step in the pipeline. 
+Creates a view based on the last step result.
+Aggregated query based on the taxi_parsed_data */
+
 config {
   type: "view",
   schema: "dataform_demo",

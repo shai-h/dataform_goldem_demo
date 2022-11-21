@@ -1,3 +1,7 @@
+/*Final step in the pipeline. 
+Creates a summary table.
+Query joins the view results with a lookeup table for payment type (which is a BigLake table) */
+
 config {
   type: "table",
   schema: "dataform_demo",
@@ -6,8 +10,7 @@ config {
   columns: {
     ride_id: `A unique identifier for a ride`,
     meter_cost: `Total cost for a specific ride`,
-  },
-
+  },                                                                                                                                                                                                                                                                          
   
   bigquery: {
     partitionBy: "DATETIME_TRUNC(start_time, HOUR)"

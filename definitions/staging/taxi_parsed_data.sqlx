@@ -1,18 +1,27 @@
+/*First step in the pipeline. 
+takes events json data from taxi_trips_pub_sub table and parse the json into columns. */
+
 config {
-  type: "incremental",
+  type: "incremental", /*builds the incremental table from scratch only for the first time. During subsequent executions, Dataform only inserts or merges new rows into the incremental table according to the conditions that you configure. */
+
   schema: "dataform_demo",
-  tags: ["staging"],
-  description: "Parse raw data into columns",
+
+  tags: ["staging"], /*To organize components of your SQL workflow into collections, you can add custom tags*/
+
+  description: "Parse raw data into columns", /*Dataform allows you to add documentation to the table/columns*/
   
   bigquery: {
     partitionBy: 'DATETIME_TRUNC(timestamp, HOUR)'
   },
   
   assertions: {
+    /*data quality test query that finds rows that violate one or more rules specified in the query*/
     nonNull: ["ride_id", "timestamp"]
 }
 
 }
+
+/* Query to parse the Json data*/
 
 select 
 replace(JSON_EXTRACT(data , "$.ride_id"),'"','') as ride_id,
@@ -25,4 +34,5 @@ cast(JSON_EXTRACT(data , "$.meter_increment") as float64) as meter_increment,
 replace(JSON_EXTRACT(data , "$.ride_status"),'"','') as ride_status,
 JSON_EXTRACT_SCALAR(data , "$.passenger_count") as passenger_count,
 from ${ref("taxi_trips_pub_sub")}
+/*condition and timeframe for the incremental insertes*/
 ${when(incremental(), `WHERE _PARTITIONTIME >= TIMESTAMP_SUB(current_TIMESTAMP(), INTERVAL 1 hour)`) }

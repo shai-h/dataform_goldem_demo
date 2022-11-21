@@ -1,6 +1,8 @@
+--- raw data. Taxi events ingested from pub/sub to BQ table
+
 config {
   type: "declaration",
   database: "hshai-477-2022101806550500",
-  schema: "dataform_demo",
+  schema: "dataform_demo", 
   name: "taxi_trips_pub_sub"
  }
